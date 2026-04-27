@@ -23,11 +23,13 @@ interface NavItemProps {
   label: string;
   collapsed: boolean;
   active: boolean;
+  onClick?: () => void;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ to, icon: Icon, label, collapsed, active }) => (
+const NavItem: React.FC<NavItemProps> = ({ to, icon: Icon, label, collapsed, active, onClick }) => (
   <Link
     to={to}
+    onClick={onClick}
     className={cn(
       "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group relative",
       active 
@@ -64,6 +66,12 @@ export const Sidebar = ({ mobileOpen, setMobileOpen }: SidebarProps) => {
   const handleLogout = () => {
     logout();
     navigate('/login');
+  };
+
+  const handleNavClick = () => {
+    if (!isLargeScreen) {
+      setMobileOpen(false);
+    }
   };
 
   useEffect(() => {
@@ -159,6 +167,7 @@ export const Sidebar = ({ mobileOpen, setMobileOpen }: SidebarProps) => {
               label={item.label}
               active={location.pathname === item.to}
               collapsed={collapsed}
+              onClick={handleNavClick}
             />
           ))}
         </nav>

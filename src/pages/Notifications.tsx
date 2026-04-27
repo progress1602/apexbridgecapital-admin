@@ -5,6 +5,7 @@ import { cn } from '../lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { useStore } from '../contexts/StoreContext';
 import { toast } from 'sonner';
+import { ConfirmModal } from '../components/ConfirmModal';
 
 export const NotificationsPage = () => {
   const { users } = useStore();
@@ -24,6 +25,8 @@ export const NotificationsPage = () => {
     { id: 2, target: 'henrydavid1602@gmail.com', message: 'Your deposit of $5,000 has been successfully processed.', date: '2024-04-23 18:20', type: 'success' },
     { id: 3, target: 'Specific Users', message: 'System maintenance scheduled for Sunday, 02:00 AM UTC.', date: '2024-04-22 12:45', type: 'alert' },
   ]);
+
+  const [deleteId, setDeleteId] = useState<number | null>(null);
 
   const handleSend = () => {
     if (!message) {
@@ -46,6 +49,14 @@ export const NotificationsPage = () => {
     setHistory([newNotice, ...history]);
     setMessage('');
     toast.success(`Broadcasting initiated. Dispatched to: ${newNotice.target}`);
+  };
+
+  const confirmDelete = () => {
+    if (deleteId) {
+      setHistory(prev => prev.filter(item => item.id !== deleteId));
+      setDeleteId(null);
+      toast.success("Notification purged from records.");
+    }
   };
 
   const getTypeIcon = (type: string) => {
@@ -291,7 +302,10 @@ export const NotificationsPage = () => {
                     <Clock size={12} />
                     <span className="text-[10px] font-mono">{item.date}</span>
                    </div>
-                   <button className="p-2 text-zinc-700 hover:text-brand-danger transition-colors">
+                   <button 
+                     onClick={() => setDeleteId(item.id)}
+                     className="p-2 text-zinc-700 hover:text-brand-danger transition-colors cursor-pointer"
+                   >
                     <Trash2 size={16} />
                    </button>
                 </div>
@@ -300,6 +314,16 @@ export const NotificationsPage = () => {
           </motion.div>
         )}
       </div>
+
+      <ConfirmModal 
+        isOpen={deleteId !== null}
+        onClose={() => setDeleteId(null)}
+        onConfirm={confirmDelete}
+        title="Purge Notification"
+        message="Are you sure you want to permanently delete this notification record? This action is irreversible."
+        confirmText="Confirm Purge"
+        variant="danger"
+      />
     </AdminLayout>
   );
 };

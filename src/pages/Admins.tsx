@@ -1,35 +1,48 @@
 import React, { useState } from 'react';
 import { AdminLayout } from '../components/AdminLayout';
 import { UserPlus, Shield, X, Trash2, Mail, Calendar } from 'lucide-react';
-import { useStore } from '../contexts/StoreContext';
+import { useStore, AdminUser } from '../contexts/StoreContext';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
+import { ConfirmModal } from '../components/ConfirmModal';
+import { toast } from 'sonner';
 
 export const AdminsPage = () => {
   const { admins, addAdmin, deleteAdmin } = useStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', role: 'sub' as 'sub' });
+  const [confirmDelete, setConfirmDelete] = useState<AdminUser | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     addAdmin({ ...formData, role: 'sub' });
     setIsModalOpen(false);
     setFormData({ name: '', email: '', role: 'sub' });
+    toast.success(`${formData.name} has been authorized as sub-admin.`);
+  };
+
+  const handleDelete = () => {
+    if (confirmDelete) {
+      deleteAdmin(confirmDelete.id);
+      setConfirmDelete(null);
+      toast.info("Administrative access revoked.");
+    }
   };
 
   return (
     <AdminLayout title="Administrative Control">
       <div className="flex flex-col gap-6">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h2 className="text-xl font-bold tracking-tight">System Staff</h2>
             <p className="text-zinc-500 text-sm">Manage administrative access and sub-admin accounts.</p>
           </div>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="editorial-button bg-brand-accent text-brand-bg flex items-center gap-2 px-6 h-11"
+            className="editorial-button bg-brand-accent text-brand-bg flex items-center gap-2 px-4 sm:px-6 h-11 w-full sm:w-auto justify-center"
           >
-            <UserPlus size={16} /> Create Sub-Admin
+            <UserPlus size={16} /> 
+            <span className="font-bold uppercase tracking-widest text-[10px]">Create Sub-Admin</span>
           </button>
         </div>
 
@@ -65,7 +78,7 @@ export const AdminsPage = () => {
                 </div>
                 {admin.role !== 'super' && (
                   <button 
-                    onClick={() => deleteAdmin(admin.id)}
+                    onClick={() => setConfirmDelete(admin)}
                     className="p-2 text-zinc-600 hover:text-brand-danger transition-colors cursor-pointer"
                     title="Revoke Access"
                   >
@@ -145,6 +158,16 @@ export const AdminsPage = () => {
           </div>
         )}
       </AnimatePresence>
+
+      <ConfirmModal 
+        isOpen={!!confirmDelete}
+        onClose={() => setConfirmDelete(null)}
+        onConfirm={handleDelete}
+        title="Revoke Credentials"
+        message={`Warning: You are about to terminate all administrative privileges for ${confirmDelete?.name}. They will lose access to all system matrices immediately.`}
+        confirmText="Revoke Access"
+        variant="danger"
+      />
     </AdminLayout>
   );
 };

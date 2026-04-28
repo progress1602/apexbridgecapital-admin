@@ -272,7 +272,7 @@ export const NotificationsPage = () => {
               <div className="pt-4">
                 <button 
                   onClick={handleSend}
-                  className="w-full md:w-auto px-8 py-4 bg-brand-accent text-brand-bg rounded-xl font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:brightness-110 active:scale-95 transition-all shadow-[0_8px_30px_rgba(16,185,129,0.3)]"
+                  className="w-full md:w-auto px-8 py-4 bg-brand-accent text-white rounded-xl font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-brand-accent-hover active:scale-95 transition-all shadow-[0_8px_30px_rgba(192,38,211,0.3)]"
                 >
                   <Send size={18} /> Disseminate Notice
                 </button>

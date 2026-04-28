@@ -167,7 +167,7 @@ export const WithdrawalsPage = () => {
                             <div className="flex items-center justify-end gap-3 translate-x-0">
                               <button 
                                 onClick={() => handleApproveClick(wd.id, wd.userEmail, wd.amount)}
-                                className="whitespace-nowrap px-4 py-2 bg-brand-accent text-brand-bg rounded-lg text-[10px] font-black uppercase hover:brightness-110 transition-all shadow-[0_5px_15px_rgba(16,185,129,0.2)] active:scale-95"
+                                className="whitespace-nowrap px-4 py-2 bg-brand-accent text-white rounded-lg text-[10px] font-black uppercase hover:bg-brand-accent-hover transition-all shadow-[0_5px_15px_rgba(192,38,211,0.2)] active:scale-95"
                               >
                                 Authorize
                               </button>

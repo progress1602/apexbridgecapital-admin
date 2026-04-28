@@ -122,11 +122,11 @@ export const Dashboard = () => {
             </h3>
             <div className="flex items-center gap-4 text-xs font-mono">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-brand-accent rounded-full" />
+                <div className="w-3 h-3 bg-[#10b981] rounded-full" />
                 <span className="text-zinc-500">Deposits</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-brand-danger rounded-full" />
+                <div className="w-3 h-3 bg-[#ef4444] rounded-full" />
                 <span className="text-zinc-500">Withdrawals</span>
               </div>
             </div>

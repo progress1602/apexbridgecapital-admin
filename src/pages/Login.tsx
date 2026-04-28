@@ -34,7 +34,7 @@ export const LoginPage = () => {
         className="w-full max-w-md"
       >
         <div className="text-center mb-12">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-accent to-[#10b981aa] flex items-center justify-center shadow-[0_0_30px_rgba(16,185,129,0.2)] mx-auto mb-6">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-accent to-purple-400 flex items-center justify-center shadow-[0_0_30px_rgba(192,38,211,0.2)] mx-auto mb-6">
             <ShieldCheck className="text-zinc-950" size={32} />
           </div>
           <h1 className="text-3xl font-black tracking-tighter text-zinc-100 mb-2">APEX BRIDGE</h1>
@@ -78,7 +78,7 @@ export const LoginPage = () => {
           <button 
             type="submit"
             disabled={loading}
-            className="w-full bg-brand-accent text-brand-bg rounded-xl py-4 font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:brightness-110 active:scale-95 transition-all shadow-[0_8px_30px_rgba(16,185,129,0.3)] disabled:opacity-50 disabled:cursor-not-allowed group"
+            className="w-full bg-brand-accent text-white rounded-xl py-4 font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-brand-accent-hover active:scale-95 transition-all shadow-[0_8px_30px_rgba(192,38,211,0.3)] disabled:opacity-50 disabled:cursor-not-allowed group"
           >
             {loading ? (
               <Loader2 className="animate-spin" size={18} />

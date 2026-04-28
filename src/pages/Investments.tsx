@@ -121,7 +121,7 @@ const CreateInvestmentModal = ({ onClose }: { onClose: () => void }) => {
                             <span className="text-sm font-bold text-zinc-300 group-hover:text-brand-accent transition-colors">{user.name}</span>
                             <span className="text-[10px] text-zinc-600 font-mono italic">{user.email}</span>
                           </div>
-                          {userEmail === user.email && <Check size={14} className="text-brand-accent shadow-[0_0_10px_rgba(16,185,129,0.3)]" />}
+                          {userEmail === user.email && <Check size={14} className="text-brand-accent shadow-[0_0_10px_rgba(192,38,211,0.3)]" />}
                       </div>
                     ))}
                   </div>
@@ -165,7 +165,7 @@ const CreateInvestmentModal = ({ onClose }: { onClose: () => void }) => {
             </button>
             <button 
               type="submit"
-              className="flex-1 px-4 py-4 rounded-xl bg-brand-accent text-brand-bg hover:brightness-110 font-black uppercase tracking-widest shadow-[0_8px_30px_rgba(16,185,129,0.3)] transition-all active:scale-95 text-[10px]"
+              className="flex-1 px-4 py-4 rounded-xl bg-brand-accent text-white hover:bg-brand-accent-hover font-black uppercase tracking-widest shadow-[0_8px_30px_rgba(192,38,211,0.3)] transition-all active:scale-95 text-[10px]"
             >
               Initialize Portfolio
             </button>
@@ -283,7 +283,7 @@ export const InvestmentsPage = () => {
           </div>
            <button 
              onClick={() => setShowCreate(true)}
-             className="glass-card bg-brand-accent border-brand-accent p-5 flex items-center justify-center gap-3 text-brand-bg group hover:brightness-110 transition-all hover:-translate-y-1 shadow-[0_10px_30px_rgba(16,185,129,0.3)]"
+             className="glass-card bg-brand-accent border-brand-accent p-5 flex items-center justify-center gap-3 text-white group hover:bg-brand-accent-hover transition-all hover:-translate-y-1 shadow-[0_10px_30px_rgba(192,38,211,0.3)]"
            >
               <Plus size={24} className="group-hover:rotate-90 transition-transform duration-300 text-white" />
               <span className="font-black text-white uppercase tracking-widest text-sm">New Allocation</span>
@@ -321,7 +321,7 @@ export const InvestmentsPage = () => {
                      <div className="p-4 grid grid-cols-2 gap-2">
                         <button 
                           onClick={() => handleAuthorizeClick(inv.id, inv.userEmail, inv.amount)}
-                          className="px-4 py-3 bg-brand-accent text-brand-bg rounded-xl font-black uppercase tracking-widest text-[10px] hover:brightness-110 active:scale-95 transition-all shadow-lg"
+                          className="px-4 py-3 bg-brand-accent text-white rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-brand-accent-hover active:scale-95 transition-all shadow-lg"
                         >
                            Authorize
                         </button>
@@ -413,7 +413,7 @@ export const InvestmentsPage = () => {
                         animate={{ width: `${inv.progress}%` }}
                         className={cn(
                           "h-full rounded-full transition-all duration-1000",
-                          inv.status === 'active' ? "bg-gradient-to-r from-brand-accent to-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.4)]" : "bg-zinc-700"
+                          inv.status === 'active' ? "bg-gradient-to-r from-brand-accent to-purple-400 shadow-[0_0_15px_rgba(192,38,211,0.4)]" : "bg-zinc-700"
                         )}
                       />
                     </div>

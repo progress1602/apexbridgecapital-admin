@@ -33,7 +33,7 @@ const NavItem: React.FC<NavItemProps> = ({ to, icon: Icon, label, collapsed, act
     className={cn(
       "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group relative",
       active 
-        ? "bg-brand-accent/10 text-brand-accent border-l-2 border-brand-accent rounded-r-md shadow-[0_0_20px_rgba(16,185,129,0.05)]" 
+        ? "bg-brand-accent/10 text-brand-accent border-l-2 border-brand-accent rounded-r-md shadow-[0_0_20px_rgba(192,38,211,0.05)]" 
         : "text-zinc-500 hover:text-zinc-100 hover:bg-zinc-800/50 border-l-2 border-transparent"
     )}
   >
@@ -126,7 +126,7 @@ export const Sidebar = ({ mobileOpen, setMobileOpen }: SidebarProps) => {
         <div className="px-6 mb-12 flex items-center justify-between overflow-hidden shrink-0">
           {!collapsed ? (
              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-accent to-[#10b981aa] flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-accent to-purple-400/50 flex items-center justify-center shadow-[0_0_20px_rgba(192,38,211,0.2)]">
                   <ShieldCheck className="text-zinc-950" size={24} />
                 </div>
                 <div>
@@ -135,7 +135,7 @@ export const Sidebar = ({ mobileOpen, setMobileOpen }: SidebarProps) => {
                 </div>
              </div>
           ) : (
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-accent to-[#10b981aa] flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-accent to-purple-400/50 flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(192,38,211,0.2)]">
               <ShieldCheck className="text-zinc-950" size={20} />
             </div>
           )}
